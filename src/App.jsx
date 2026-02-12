@@ -179,7 +179,7 @@ const InteriorDesignWebsite = () => {
   <img 
     src={magnum}
     alt="LuxeInterior Logo" 
-    className="h-12 w-auto lg:w-auto"
+    className="h-8 w-auto "
   />
   
   
