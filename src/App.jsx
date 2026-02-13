@@ -48,8 +48,8 @@ const InteriorDesignWebsite = () => {
         ticking = true;
       }
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Toggle theme
@@ -275,7 +275,7 @@ const InteriorDesignWebsite = () => {
               <img
                 src={magnum2}
                 alt="LuxeInterior Logo"
-                className="h-9 w-auto "
+                className="h-9 md:h-11 lg:h-13 w-auto"
                 loading="lazy"
               />
             </motion.div>
@@ -387,7 +387,7 @@ const InteriorDesignWebsite = () => {
             playsInline
             className="w-full h-full object-cover scale-105"
             // poster="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80"
-            style={{ willChange: 'auto' }}
+            style={{ willChange: "auto" }}
           >
             {/* Replace this URL with your actual interior design showreel video */}
             <source
@@ -582,12 +582,17 @@ const InteriorDesignWebsite = () => {
 
         {/* First Row - Scroll Right */}
         <div className="mb-8 overflow-hidden">
-        <motion.div
-  animate={{ x: [0, -2400] }}
-  transition={{ duration: 40, repeat: Infinity, ease: "linear", repeatType: "loop" }}
-  className="flex gap-6"
-  style={{ willChange: 'transform' }}
->
+          <motion.div
+            animate={{ x: [0, -2400] }}
+            transition={{
+              duration: 40,
+              repeat: Infinity,
+              ease: "linear",
+              repeatType: "loop",
+            }}
+            className="flex gap-6"
+            style={{ willChange: "transform" }}
+          >
             {[...projects, ...projects, ...projects].map((project, index) => (
               <motion.div
                 key={`row1-${index}`}
@@ -762,8 +767,8 @@ const InteriorDesignWebsite = () => {
                   }`}
                 >
                   <div className="inline-block text-yellow-400 mb-6">
-  {stat.icon}
-</div>
+                    {stat.icon}
+                  </div>
                   <h3 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600 mb-4">
                     {stat.number}
                   </h3>
