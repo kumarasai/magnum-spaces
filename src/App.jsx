@@ -27,7 +27,7 @@ import {
   Linkedin,
   Twitter,
 } from "lucide-react";
-import magnum from "../src/assets/magnum.png";
+import magnum2 from "../src/assets/magnum2.png";
 
 const InteriorDesignWebsite = () => {
   const [activeService, setActiveService] = useState(0);
@@ -273,9 +273,9 @@ const InteriorDesignWebsite = () => {
             >
               {/* Your Logo Image */}
               <img
-                src={magnum}
+                src={magnum2}
                 alt="LuxeInterior Logo"
-                className="h-8 w-auto "
+                className="h-9 w-auto "
                 loading="lazy"
               />
             </motion.div>
@@ -386,7 +386,7 @@ const InteriorDesignWebsite = () => {
             muted
             playsInline
             className="w-full h-full object-cover scale-105"
-            poster="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80"
+            // poster="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80"
             style={{ willChange: 'auto' }}
           >
             {/* Replace this URL with your actual interior design showreel video */}
@@ -1260,7 +1260,7 @@ const InteriorDesignWebsite = () => {
               >
                 {/* Your Logo Image */}
                 <img
-                  src={magnum}
+                  src={magnum2}
                   alt="LuxeInterior Logo"
                   className="h-12 w-auto my-5"
                   loading="lazy"
