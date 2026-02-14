@@ -109,14 +109,14 @@ const InteriorDesignWebsite = () => {
       id: 5,
       title: "Industrial Loft Design",
       image:
-        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
+        "https://media.istockphoto.com/id/1404031450/photo/industrial-style-of-dark-living-room-interior-3d-render.jpg?s=612x612&w=0&k=20&c=kGNIsMgraH-zBPRQNkSFceutRafnMM9g03EWRFDD0EE=",
       category: "Modern",
     },
     {
       id: 6,
       title: "Elegant Dining Space",
       image:
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+        "https://www.shutterstock.com/image-illustration/elegant-modern-dining-room-neutral-600nw-2535073737.jpg",
       category: "Luxury",
     },
     {
@@ -186,7 +186,7 @@ const InteriorDesignWebsite = () => {
       id: 1,
       name: "John",
       role: "Homeowner",
-      image: "",
+      
       rating: 5,
       review:
         "Absolutely transformed our living space! The attention to detail and creative vision exceeded all our expectations. Every corner of our home now tells a story.",
@@ -196,7 +196,7 @@ const InteriorDesignWebsite = () => {
       id: 2,
       name: "Michael",
       role: "Business Owner",
-      image: "",
+      
       rating: 5,
       review:
         "Professional, punctual, and incredibly talented. They understood our brand identity and created an office space that inspires our team every single day.",
@@ -212,36 +212,7 @@ const InteriorDesignWebsite = () => {
         "From concept to completion, the journey was seamless. Their innovative approach to space planning turned our small apartment into a spacious, luxurious retreat.",
       project: "Luxury Apartment",
     },
-    {
-      id: 4,
-      name: "Ravi",
-      role: "Restaurant Owner",
-      image: "",
-      rating: 5,
-      review:
-        "The ambiance they created has significantly elevated our customer experience. Our restaurant now has a distinct personality that keeps guests coming back.",
-      project: "Fine Dining Restaurant",
-    },
-    {
-      id: 5,
-      name: "Kumar",
-      role: "Homeowner",
-      image: "",
-      rating: 5,
-      review:
-        "Impeccable taste and flawless execution. They listened to our needs and delivered beyond our wildest dreams. Our home is now a masterpiece!",
-      project: "Penthouse Suite",
-    },
-    {
-      id: 6,
-      name: "Robert ",
-      role: "Hotel Manager",
-      image: "0",
-      rating: 5,
-      review:
-        "Outstanding work on our boutique hotel. The designs are timeless, elegant, and have received incredible feedback from our guests. Truly exceptional!",
-      project: "Boutique Hotel",
-    },
+    
   ];
 
   return (
@@ -291,11 +262,7 @@ const InteriorDesignWebsite = () => {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className={`font-medium transition-colors duration-300 relative group ${
-                    isDarkTheme
-                      ? "text-gray-300 hover:text-yellow-400"
-                      : "text-gray-700 hover:text-yellow-600"
-                  }`}
+                  className="text-gray-500 hover:text-yellow-400 font-medium transition-colors duration-300 relative group"
                 >
                   {item.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-yellow-600 group-hover:w-full transition-all duration-300"></span>
@@ -319,7 +286,7 @@ const InteriorDesignWebsite = () => {
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`md:hidden p-2 ${
-                isDarkTheme ? "text-white" : "text-black"
+                isDarkTheme ? "text-white" : "text-white"
               }`}
             >
               {isMenuOpen ? (
@@ -339,7 +306,7 @@ const InteriorDesignWebsite = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               className={`md:hidden backdrop-blur-lg border-t border-yellow-500/20 ${
-                isDarkTheme ? "bg-black/98" : "bg-white/98"
+                isDarkTheme ? "bg-white/98" : "bg-white/98"
               }`}
             >
               <div className="px-4 py-6 space-y-4">
@@ -350,11 +317,7 @@ const InteriorDesignWebsite = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className={`block w-full text-left font-medium py-2 transition-colors duration-300 ${
-                      isDarkTheme
-                        ? "text-gray-300 hover:text-yellow-400"
-                        : "text-gray-700 hover:text-yellow-600"
-                    }`}
+                    className="block w-full text-left text-gray-500 hover:text-yellow-400 font-medium py-2 transition-colors duration-300"
                   >
                     {item.name}
                   </motion.button>
@@ -485,7 +448,7 @@ const InteriorDesignWebsite = () => {
             transition={{ duration: 1, delay: 0.2 }}
           >
             <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight">
-              <span className={isDarkTheme ? "text-white" : "text-black"}>
+              <span className="text-white">
                 Crafting
               </span>
               <br />
@@ -499,9 +462,7 @@ const InteriorDesignWebsite = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className={`text-xl md:text-2xl mb-12 max-w-2xl ${
-              isDarkTheme ? "text-gray-300" : "text-gray-700"
-            }`}
+            className={"text-xl md:text-2xl mb-12 max-w-2xl text-white"}
           >
             Where luxury meets functionality in perfect harmony
           </motion.p>
@@ -875,19 +836,19 @@ const InteriorDesignWebsite = () => {
                       isDarkTheme ? "text-white" : "text-black"
                     }`}
                   >
-                    Praveen
+                    Keerthana
                   </h3>
                   <p className="text-yellow-400 font-semibold mb-4">
-                    Lead Designer
+                    Project Managaer
                   </p>
                   <p
                     className={`leading-relaxed ${
                       isDarkTheme ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Aliquam quos nemo architecto possimus nihil omnis
-                    consectetur laborum
+                    <span className="bg-yellow-300 rounded-lg p-1 m-1 text-black">Bio:</span> Ensuring every vision is executed with precision and technical excellence.<br/>
+
+                       <span className="bg-yellow-300 rounded-lg p-1 m-1 text-black">Specialty:</span> Streamlining procurement and site execution workflows.
                   </p>
                 </div>
               </div>
@@ -944,19 +905,21 @@ const InteriorDesignWebsite = () => {
                       isDarkTheme ? "text-white" : "text-black"
                     }`}
                   >
-                    Name Here
+                    Praveen 
                   </h3>
                   <p className="text-yellow-400 font-semibold mb-4">
-                    Creative Director
+                  Lead Designer
                   </p>
                   <p
                     className={`leading-relaxed ${
                       isDarkTheme ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Aliquam quos nemo architecto possimus nihil omnis
-                    consectetur laborum
+                    <span className="bg-yellow-300 rounded-lg p-1 m-1 text-black">Bio:</span> Transforming spatial concepts into immersive architectural realities.<br/>
+
+<span className="bg-yellow-300 rounded-lg p-1 m-1 text-black">Specialty:</span>  Expert in spatial planning and bespoke luxury furniture.
+
+Somnath Creative Director.
                   </p>
                 </div>
               </div>
@@ -1013,19 +976,19 @@ const InteriorDesignWebsite = () => {
                       isDarkTheme ? "text-white" : "text-black"
                     }`}
                   >
-                    Name Here
+                    Somnath
                   </h3>
                   <p className="text-yellow-400 font-semibold mb-4">
-                    Project Manager
+                  Creative Director
                   </p>
                   <p
                     className={`leading-relaxed ${
                       isDarkTheme ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Aliquam quos nemo architecto possimus nihil omnis
-                    consectetur laborum
+                    <span className="bg-yellow-300 rounded-lg p-1 m-1 text-black">Bio:</span> Defining the visual language and aesthetic soul of every project.<br/>
+
+<span className="bg-yellow-300 rounded-lg p-1 m-1 text-black">Specialty:</span>  Focused on material palettes and avant-garde styling.
                   </p>
                 </div>
               </div>
@@ -1137,12 +1100,7 @@ const InteriorDesignWebsite = () => {
                   <div className="flex items-center gap-4">
                     <div className="relative">
                       <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full blur-md opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
-                      <img
-                        src={review.image}
-                        alt={review.name}
-                        className="relative w-14 h-14 rounded-full object-cover border-2 border-yellow-400/50"
-                        loading="lazy"
-                      />
+                      
                     </div>
                     <div>
                       <h4
@@ -1178,7 +1136,7 @@ const InteriorDesignWebsite = () => {
             >
               <div className="flex items-center gap-2 text-yellow-400">
                 <Star className="w-6 h-6 fill-yellow-400" />
-                <span className="text-2xl font-bold">5.0</span>
+                <span className="text-2xl font-bold">4.9</span>
                 <Star className="w-6 h-6 fill-yellow-400" />
               </div>
             </motion.div>
@@ -1456,7 +1414,7 @@ const InteriorDesignWebsite = () => {
                   isDarkTheme ? "text-gray-500" : "text-gray-600"
                 }`}
               >
-                © 2024 LuxeInterior. All rights reserved.
+                © 2026 MagnumSpaces. All rights reserved.
               </p>
               <div className="flex gap-6 text-sm">
                 <a
