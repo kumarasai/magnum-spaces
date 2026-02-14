@@ -105,13 +105,13 @@ const InteriorDesignWebsite = () => {
         "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80",
       category: "Residential",
     },
-    {
-      id: 5,
-      title: "Industrial Loft Design",
-      image:
-        "https://media.istockphoto.com/id/1404031450/photo/industrial-style-of-dark-living-room-interior-3d-render.jpg?s=612x612&w=0&k=20&c=kGNIsMgraH-zBPRQNkSFceutRafnMM9g03EWRFDD0EE=",
-      category: "Modern",
-    },
+    // {
+    //   id: 5,
+    //   title: "Industrial Loft Design",
+    //   image:
+    //     "https://media.istockphoto.com/id/1404031450/photo/industrial-style-of-dark-living-room-interior-3d-render.jpg?s=612x612&w=0&k=20&c=kGNIsMgraH-zBPRQNkSFceutRafnMM9g03EWRFDD0EE=",
+    //   category: "Modern",
+    // },
     {
       id: 6,
       title: "Elegant Dining Space",
@@ -184,8 +184,8 @@ const InteriorDesignWebsite = () => {
   const reviews = [
     {
       id: 1,
-      name: "John",
-      role: "Homeowner",
+      name: "sai",
+      
       
       rating: 5,
       review:
@@ -194,8 +194,8 @@ const InteriorDesignWebsite = () => {
     },
     {
       id: 2,
-      name: "Michael",
-      role: "Business Owner",
+      name: "ravi",
+      
       
       rating: 5,
       review:
@@ -205,7 +205,7 @@ const InteriorDesignWebsite = () => {
     {
       id: 3,
       name: "Venkat",
-      role: "Interior Enthusiast",
+      
       image: "",
       rating: 5,
       review:
@@ -229,8 +229,8 @@ const InteriorDesignWebsite = () => {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
             ? isDarkTheme
-              ? "bg-black/95 backdrop-blur-lg shadow-lg shadow-yellow-500/10"
-              : "bg-white/95 backdrop-blur-lg shadow-lg shadow-yellow-500/20"
+              ? "bg-black/95 backdrop-blur-lg shadow-lg shadow-yellow-500/10 "
+              : "bg-white/95 backdrop-blur-lg shadow-lg shadow-yellow-500/20 text-black"
             : "bg-transparent"
         }`}
       >
@@ -285,8 +285,8 @@ const InteriorDesignWebsite = () => {
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`md:hidden p-2 ${
-                isDarkTheme ? "text-white" : "text-white"
+              className={` md:hidden p-2 ${
+                isDarkTheme ? "text-white" : "text-black"
               }`}
             >
               {isMenuOpen ? (
@@ -846,9 +846,9 @@ const InteriorDesignWebsite = () => {
                       isDarkTheme ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
-                    <span className="bg-yellow-300 rounded-lg p-1 m-1 text-black">Bio:</span> Ensuring every vision is executed with precision and technical excellence.<br/>
+                    Ensuring every vision is executed with precision and technical excellence.<br/>
 
-                       <span className="bg-yellow-300 rounded-lg p-1 m-1 text-black">Specialty:</span> Streamlining procurement and site execution workflows.
+                       Streamlining procurement and site execution workflows.
                   </p>
                 </div>
               </div>
@@ -915,11 +915,11 @@ const InteriorDesignWebsite = () => {
                       isDarkTheme ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
-                    <span className="bg-yellow-300 rounded-lg p-1 m-1 text-black">Bio:</span> Transforming spatial concepts into immersive architectural realities.<br/>
+                     Transforming spatial concepts into immersive architectural realities.<br/>
 
-<span className="bg-yellow-300 rounded-lg p-1 m-1 text-black">Specialty:</span>  Expert in spatial planning and bespoke luxury furniture.
+  Expert in spatial planning and bespoke luxury furniture.
 
-Somnath Creative Director.
+
                   </p>
                 </div>
               </div>
@@ -986,9 +986,9 @@ Somnath Creative Director.
                       isDarkTheme ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
-                    <span className="bg-yellow-300 rounded-lg p-1 m-1 text-black">Bio:</span> Defining the visual language and aesthetic soul of every project.<br/>
+                     Defining the visual language and aesthetic soul of every project.<br/>
 
-<span className="bg-yellow-300 rounded-lg p-1 m-1 text-black">Specialty:</span>  Focused on material palettes and avant-garde styling.
+  Focused on material palettes and avant-garde styling.
                   </p>
                 </div>
               </div>
@@ -1097,7 +1097,7 @@ Somnath Creative Director.
                   </div>
 
                   {/* Author Info */}
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-3">
                     <div className="relative">
                       <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full blur-md opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
                       
@@ -1110,13 +1110,7 @@ Somnath Creative Director.
                       >
                         {review.name}
                       </h4>
-                      <p
-                        className={`text-sm ${
-                          isDarkTheme ? "text-gray-500" : "text-gray-600"
-                        }`}
-                      >
-                        {review.role}
-                      </p>
+                      
                     </div>
                   </div>
                 </div>
@@ -1207,6 +1201,7 @@ Somnath Creative Director.
         }`}
       >
         {/* Main Footer Content */}
+        <div className="lg:flex lg:flex-row lg:justify-evenly" >
         <div className="max-w-7xl mx-auto px-4 py-16">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Company Info */}
@@ -1218,19 +1213,20 @@ Somnath Creative Director.
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 cursor-pointer"
+                className="flex  flex-col justify-center items-center gap-2 cursor-pointer"
                 onClick={() => scrollToSection("#home")}
+                
               >
                 {/* Your Logo Image */}
                 <img
                   src={magnum2}
-                  alt="LuxeInterior Logo"
-                  className="h-12 w-auto my-5"
+                  alt="Logo"
+                  className="h-12 w-auto my-1  "
                   loading="lazy"
                 />
               </motion.div>
               <p
-                className={`mb-6 leading-relaxed ${
+                className={`mb-0 leading-relaxed sm:text-align-center ${
                   isDarkTheme ? "text-gray-400" : "text-gray-600"
                 }`}
               >
@@ -1238,33 +1234,12 @@ Somnath Creative Director.
                 vision to life with creativity, precision, and passion.
               </p>
               {/* Social Media */}
-              <div className="flex gap-4">
-                {[
-                  { icon: <Facebook className="w-5 h-5" />, href: "#" },
-                  { icon: <Instagram className="w-5 h-5" />, href: "#" },
-                  { icon: <Linkedin className="w-5 h-5" />, href: "#" },
-                  { icon: <Twitter className="w-5 h-5" />, href: "#" },
-                ].map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.2, rotate: 5 }}
-                    whileTap={{ scale: 0.9 }}
-                    className={`w-10 h-10 border border-yellow-500/20 hover:border-yellow-500/50 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                      isDarkTheme
-                        ? "bg-gradient-to-br from-zinc-800 to-zinc-900 text-gray-400 hover:text-yellow-400"
-                        : "bg-gradient-to-br from-gray-100 to-gray-200 text-gray-600 hover:text-yellow-600"
-                    }`}
-                  >
-                    {social.icon}
-                  </motion.a>
-                ))}
-              </div>
+              
             </motion.div>
 
             {/* Quick Links */}
+           
+            <div className="flex justify-evenly lg:flex lg:justify-between">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1321,15 +1296,17 @@ Somnath Creative Director.
                 ))}
               </ul>
             </motion.div>
-
+            </div>
             {/* Contact Info */}
+           
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
+              
             >
-              <h3 className="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
+              <h3 className=" text-center text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
                 Get In Touch
               </h3>
               <ul className="space-y-4">
@@ -1339,7 +1316,7 @@ Somnath Creative Director.
                   }`}
                 >
                   <MapPin className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
-                  <span>Vijayawada , Andhra Pradesh</span>
+                  <span>5th floor , pranava business park HiTech-City , Kothaguda, Hyderabad - Telangana 500084</span>
                 </li>
                 <li
                   className={`flex items-start gap-3 ${
@@ -1349,17 +1326,17 @@ Somnath Creative Director.
                   <Phone className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
                   <div>
                     <a
-                      href="tel:+1234567890"
+                      href="tel:+91 9000487911"
                       className={`transition-colors duration-300 block ${
                         isDarkTheme
                           ? "hover:text-yellow-400"
                           : "hover:text-yellow-600"
                       }`}
                     >
-                      +91 891 977 2282
+                      +91 9000487911
                     </a>
                     <a
-                      href="https://wa.me/1234567890"
+                      href="https://wa.me/+919000487911"
                       className={`transition-colors duration-300 text-sm block mt-1 ${
                         isDarkTheme
                           ? "hover:text-yellow-400"
@@ -1377,14 +1354,14 @@ Somnath Creative Director.
                 >
                   <Mail className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
                   <a
-                    href="mailto:hello@luxeinterior.com"
+                    href="mailto:themagnumspaces@gmail.com"
                     className={`transition-colors duration-300 ${
                       isDarkTheme
                         ? "hover:text-yellow-400"
                         : "hover:text-yellow-600"
                     }`}
                   >
-                    magnumspaces@gmail.com
+                    themagnumspaces@gmail.com
                   </a>
                 </li>
                 <li
@@ -1400,6 +1377,7 @@ Somnath Creative Director.
                 </li>
               </ul>
             </motion.div>
+          </div>
           </div>
 
           {/* Newsletter Section */}
