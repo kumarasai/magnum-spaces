@@ -1191,245 +1191,188 @@ const InteriorDesignWebsite = () => {
           </motion.a>
         </motion.div>
       </section>
+{/* New Simplified Footer */}
+{/* New Simplified Footer */}
+<footer className={`py-16 px-4 transition-colors duration-700 ${
+  isDarkTheme 
+    ? 'bg-black border-t border-yellow-500/20' 
+    : 'bg-white border-t border-yellow-500/20'
+}`}>
+  <div className="max-w-7xl mx-auto">
+    {/* Logo and Tagline */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="text-center mb-12"
+    >
+      <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
+          MAGNUM SPACES
+        </span>
+      </h2>
+      <p className="text-sm uppercase tracking-wider text-yellow-500 mb-6">
+        Interior Design & Architecture
+      </p>
+      <p className={`max-w-2xl mx-auto leading-relaxed ${
+        isDarkTheme ? 'text-gray-400' : 'text-gray-600'
+      }`}>
+        Transforming spaces into timeless masterpieces. We bring your vision to life with creativity, precision, and passion.
+      </p>
+    </motion.div>
 
-      {/* Comprehensive Footer */}
-      <footer
-        className={`border-t border-yellow-500/20 transition-colors duration-700 ${
-          isDarkTheme
-            ? "bg-gradient-to-b from-black to-zinc-950"
-            : "bg-gradient-to-b from-white to-gray-50"
-        }`}
-      >
-        {/* Main Footer Content */}
-        <div className="lg:flex lg:flex-row lg:justify-evenly" >
-        <div className="max-w-7xl mx-auto px-4 py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-            {/* Company Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex  flex-col justify-center items-center gap-2 cursor-pointer"
-                onClick={() => scrollToSection("#home")}
-                
-              >
-                {/* Your Logo Image */}
-                <img
-                  src={magnum2}
-                  alt="Logo"
-                  className="h-12 w-auto my-1  "
-                  loading="lazy"
-                />
-              </motion.div>
-              <p
-                className={`mb-0 leading-relaxed sm:text-align-center ${
-                  isDarkTheme ? "text-gray-400" : "text-gray-600"
+    {/* Links Section - Responsive Layout */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      viewport={{ once: true }}
+      className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-8 mb-12"
+    >
+      {/* Quick Links */}
+      <div className="text-center md:text-left">
+        <h3 className="text-xl font-bold mb-6 text-yellow-400">
+          Quick Links
+        </h3>
+        <ul className="space-y-3">
+          {navItems.map((item, index) => (
+            <li key={index}>
+              <button
+                onClick={() => scrollToSection(item.href)}
+                className={`transition-colors duration-300 flex items-center justify-center md:justify-start gap-2 group mx-auto md:mx-0 ${
+                  isDarkTheme ? 'text-gray-400 hover:text-yellow-400' : 'text-gray-600 hover:text-yellow-600'
                 }`}
               >
-                Transforming spaces into timeless masterpieces. We bring your
-                vision to life with creativity, precision, and passion.
-              </p>
-              {/* Social Media */}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                {item.name}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Our Services */}
+      <div className="text-center md:text-left">
+        <h3 className="text-xl font-bold mb-6 text-yellow-400">
+          Our Services
+        </h3>
+        <ul className="space-y-3">
+          {services.map((service, index) => (
+            <li key={index}>
               
-            </motion.div>
-
-            {/* Quick Links */}
-           
-            <div className="flex justify-evenly lg:flex lg:justify-between">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
-                Quick Links
-              </h3>
-              <ul className="space-y-3">
-                {navItems.map((item, index) => (
-                  <li key={index}>
-                    <button
-                      onClick={() => scrollToSection(item.href)}
-                      className={`transition-colors duration-300 flex items-center gap-2 group ${
-                        isDarkTheme
-                          ? "text-gray-400 hover:text-yellow-400"
-                          : "text-gray-600 hover:text-yellow-600"
-                      }`}
-                    >
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                      {item.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Services */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
-                Our Services
-              </h3>
-              <ul className="space-y-3">
-                {services.map((service, index) => (
-                  <li key={index}>
-                    <a
-                      href="#services"
-                      className={`transition-colors duration-300 flex items-center gap-2 group ${
-                        isDarkTheme
-                          ? "text-gray-400 hover:text-yellow-400"
-                          : "text-gray-600 hover:text-yellow-600"
-                      }`}
-                    >
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                      {service.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-            </div>
-            {/* Contact Info */}
-           
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              
-            >
-              <h3 className=" text-center text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
-                Get In Touch
-              </h3>
-              <ul className="space-y-4">
-                <li
-                  className={`flex items-start gap-3 ${
-                    isDarkTheme ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  <MapPin className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
-                  <span>5th floor , pranava business park HiTech-City , Kothaguda, Hyderabad - Telangana 500084</span>
-                </li>
-                <li
-                  className={`flex items-start gap-3 ${
-                    isDarkTheme ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  <Phone className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <a
-                      href="tel:+91 9000487911"
-                      className={`transition-colors duration-300 block ${
-                        isDarkTheme
-                          ? "hover:text-yellow-400"
-                          : "hover:text-yellow-600"
-                      }`}
-                    >
-                      +91 9000487911
-                    </a>
-                    <a
-                      href="https://wa.me/+919000487911"
-                      className={`transition-colors duration-300 text-sm block mt-1 ${
-                        isDarkTheme
-                          ? "hover:text-yellow-400"
-                          : "hover:text-yellow-600"
-                      }`}
-                    >
-                      WhatsApp Available
-                    </a>
-                  </div>
-                </li>
-                <li
-                  className={`flex items-start gap-3 ${
-                    isDarkTheme ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  <Mail className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
-                  <a
-                    href="mailto:themagnumspaces@gmail.com"
-                    className={`transition-colors duration-300 ${
-                      isDarkTheme
-                        ? "hover:text-yellow-400"
-                        : "hover:text-yellow-600"
-                    }`}
-                  >
-                    themagnumspaces@gmail.com
-                  </a>
-                </li>
-                <li
-                  className={`flex items-start gap-3 ${
-                    isDarkTheme ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  <Clock className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
-                    <p className="text-sm">Sat: 10:00 AM - 4:00 PM</p>
-                  </div>
-                </li>
-              </ul>
-            </motion.div>
-          </div>
-          </div>
-
-          {/* Newsletter Section */}
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-yellow-500/20">
-          <div className="max-w-7xl mx-auto px-4 py-6">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p
-                className={`text-sm ${
-                  isDarkTheme ? "text-gray-500" : "text-gray-600"
+                <a href="#services"
+                className={`transition-colors duration-300 flex items-center justify-center md:justify-start gap-2 group mx-auto md:mx-0 ${
+                  isDarkTheme ? 'text-gray-400 hover:text-yellow-400' : 'text-gray-600 hover:text-yellow-600'
                 }`}
               >
-                © 2026 MagnumSpaces. All rights reserved.
-              </p>
-              <div className="flex gap-6 text-sm">
-                <a
-                  href="#"
-                  className={`transition-colors duration-300 ${
-                    isDarkTheme
-                      ? "text-gray-500 hover:text-yellow-400"
-                      : "text-gray-600 hover:text-yellow-600"
-                  }`}
-                >
-                  Privacy Policy
-                </a>
-                <a
-                  href="#"
-                  className={`transition-colors duration-300 ${
-                    isDarkTheme
-                      ? "text-gray-500 hover:text-yellow-400"
-                      : "text-gray-600 hover:text-yellow-600"
-                  }`}
-                >
-                  Terms of Service
-                </a>
-                <a
-                  href="#"
-                  className={`transition-colors duration-300 ${
-                    isDarkTheme
-                      ? "text-gray-500 hover:text-yellow-400"
-                      : "text-gray-600 hover:text-yellow-600"
-                  }`}
-                >
-                  Cookie Policy
-                </a>
-              </div>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                {service.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Get In Touch */}
+      <div className="text-center md:text-left col-span-2 md:col-span-1">
+        <h3 className="text-xl font-bold mb-6 text-yellow-400">
+          Get In Touch
+        </h3>
+        <ul className="space-y-4">
+          <li className={`flex items-start gap-3 justify-center md:justify-start ${
+            isDarkTheme ? 'text-gray-400' : 'text-gray-600'
+          }`}>
+            <MapPin className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
+            <span className="text-left">5th floor, pranaya business park HiTech-City, Kothaguda, Hyderabad - Telangana 500084</span>
+          </li>
+          <li className={`flex items-start gap-3 justify-center md:justify-start ${
+            isDarkTheme ? 'text-gray-400' : 'text-gray-600'
+          }`}>
+            <Phone className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
+            <div className="text-left">
+              <a href="tel:+919000487911" className={`transition-colors duration-300 block ${
+                isDarkTheme ? 'hover:text-yellow-400' : 'hover:text-yellow-600'
+              }`}>
+                +91 9000487911
+              </a>
+              <a href="https://wa.me/919000487911" className={`transition-colors duration-300 text-sm block mt-1 ${
+                isDarkTheme ? 'hover:text-yellow-400' : 'hover:text-yellow-600'
+              }`}>
+                WhatsApp Available
+              </a>
             </div>
-          </div>
+          </li>
+          <li className={`flex items-start gap-3 justify-center md:justify-start ${
+            isDarkTheme ? 'text-gray-400' : 'text-gray-600'
+          }`}>
+            <Mail className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
+            <a href="mailto:info@magnumspaces.com" className={`transition-colors duration-300 text-left ${
+              isDarkTheme ? 'hover:text-yellow-400' : 'hover:text-yellow-600'
+            }`}>
+              info@magnumspaces.com
+            </a>
+          </li>
+        </ul>
+
+        {/* Social Media */}
+        <div className="flex gap-4 mt-6 justify-center md:justify-start">
+          {[
+            { icon: <Facebook className="w-5 h-5" />, href: "#" },
+            { icon: <Instagram className="w-5 h-5" />, href: "#" },
+            { icon: <Linkedin className="w-5 h-5" />, href: "#" },
+            { icon: <Twitter className="w-5 h-5" />, href: "#" }
+          ].map((social, index) => (
+            <motion.a
+              key={index}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.2, rotate: 5 }}
+              whileTap={{ scale: 0.9 }}
+              className={`w-10 h-10 border border-yellow-500/20 hover:border-yellow-500/50 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                isDarkTheme 
+                  ? 'bg-gradient-to-br from-zinc-800 to-zinc-900 text-gray-400 hover:text-yellow-400' 
+                  : 'bg-gradient-to-br from-gray-100 to-gray-200 text-gray-600 hover:text-yellow-600'
+              }`}
+            >
+              {social.icon}
+            </motion.a>
+          ))}
         </div>
-      </footer>
+      </div>
+    </motion.div>
+
+    {/* Bottom Bar */}
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.6, delay: 0.4 }}
+      viewport={{ once: true }}
+      className="pt-8 border-t border-yellow-500/20"
+    >
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+        <p className={`text-sm ${isDarkTheme ? 'text-gray-500' : 'text-gray-600'}`}>
+          © 2024 Magnum Spaces. All rights reserved.
+        </p>
+        <div className="flex gap-6 text-sm">
+          <a href="#" className={`transition-colors duration-300 ${
+            isDarkTheme ? 'text-gray-500 hover:text-yellow-400' : 'text-gray-600 hover:text-yellow-600'
+          }`}>
+            Privacy Policy
+          </a>
+          <a href="#" className={`transition-colors duration-300 ${
+            isDarkTheme ? 'text-gray-500 hover:text-yellow-400' : 'text-gray-600 hover:text-yellow-600'
+          }`}>
+            Terms of Service
+          </a>
+        </div>
+      </div>
+    </motion.div>
+  </div>
+</footer>
+     
+     
     </div>
   );
 };
