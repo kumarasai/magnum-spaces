@@ -271,7 +271,7 @@ const InteriorDesignWebsite = () => {
                 </motion.button>
               ))}
               <motion.a
-                href="https://wa.me/1234567890"
+                href="https://wa.me/+919000487911"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -470,7 +470,7 @@ const InteriorDesignWebsite = () => {
           </motion.p>
 
           <motion.a
-            href="https://wa.me/+918919772282"
+            href="https://wa.me/+919000487911"
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0, scale: 0.8 }}
