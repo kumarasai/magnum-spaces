@@ -28,8 +28,8 @@ import {
   Twitter,
 } from "lucide-react";
 import magnum2 from "../src/assets/magnum2.png";
-import boy from './assets/boy-user.jpg';
-import girl from './assets/girl-user.jpg'
+import boy from "./assets/boy-user.jpg";
+import girl from "./assets/girl-user.jpg";
 
 const InteriorDesignWebsite = () => {
   const [activeService, setActiveService] = useState(0);
@@ -69,12 +69,31 @@ const InteriorDesignWebsite = () => {
   ];
 
   // Smooth scroll function
+  // const scrollToSection = (href) => {
+  //   const element = document.querySelector(href);
+  //   if (element) {
+  //     element.scrollIntoView({ behavior: "smooth" });
+  //     setIsMenuOpen(false);
+  //   }
+  // };
+
+  // Smooth scroll function
   const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false);
-    }
+    setIsMenuOpen(false);
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        const headerOffset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition =
+          elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }, 100);
   };
 
   // Projects data
@@ -107,13 +126,7 @@ const InteriorDesignWebsite = () => {
         "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80",
       category: "Residential",
     },
-    // {
-    //   id: 5,
-    //   title: "Industrial Loft Design",
-    //   image:
-    //     "https://media.istockphoto.com/id/1404031450/photo/industrial-style-of-dark-living-room-interior-3d-render.jpg?s=612x612&w=0&k=20&c=kGNIsMgraH-zBPRQNkSFceutRafnMM9g03EWRFDD0EE=",
-    //   category: "Modern",
-    // },
+    
     {
       id: 6,
       title: "Elegant Dining Space",
@@ -187,8 +200,7 @@ const InteriorDesignWebsite = () => {
     {
       id: 1,
       name: "sai",
-      
-      
+
       rating: 5,
       review:
         "Absolutely transformed our living space! The attention to detail and creative vision exceeded all our expectations. Every corner of our home now tells a story.",
@@ -197,8 +209,7 @@ const InteriorDesignWebsite = () => {
     {
       id: 2,
       name: "ravi",
-      
-      
+
       rating: 5,
       review:
         "Professional, punctual, and incredibly talented. They understood our brand identity and created an office space that inspires our team every single day.",
@@ -207,14 +218,13 @@ const InteriorDesignWebsite = () => {
     {
       id: 3,
       name: "Venkat",
-      
+
       image: "",
       rating: 5,
       review:
         "From concept to completion, the journey was seamless. Their innovative approach to space planning turned our small apartment into a spacious, luxurious retreat.",
       project: "Luxury Apartment",
     },
-    
   ];
 
   return (
@@ -315,11 +325,18 @@ const InteriorDesignWebsite = () => {
                 {navItems.map((item, index) => (
                   <motion.button
                     key={item.name}
-                    onClick={() => scrollToSection(item.href)}
+                    onClick={() => {
+                      scrollToSection(item.href);
+                      setIsMenuOpen(false);
+                    }}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="block w-full text-left text-gray-500 hover:text-yellow-400 font-medium py-2 transition-colors duration-300"
+                    className={`block w-full text-left font-medium py-2 transition-colors duration-300 ${
+                      isDarkTheme
+                        ? "text-gray-300 hover:text-yellow-400"
+                        : "text-gray-800 hover:text-yellow-600"
+                    }`}
                   >
                     {item.name}
                   </motion.button>
@@ -450,9 +467,7 @@ const InteriorDesignWebsite = () => {
             transition={{ duration: 1, delay: 0.2 }}
           >
             <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight">
-              <span className="text-white">
-                Crafting
-              </span>
+              <span className="text-white">Crafting</span>
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600">
                 Timeless Spaces
@@ -584,39 +599,18 @@ const InteriorDesignWebsite = () => {
 
         {/* Second Row - Scroll Left */}
         <div className="overflow-hidden">
+         
           <motion.div
-            animate={{ x: [-2400, 0] }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            className="flex gap-6"
-          >
-            {[
-              ...projects.slice().reverse(),
-              ...projects.slice().reverse(),
-              ...projects.slice().reverse(),
-            ].map((project, index) => (
-              <motion.div
-                key={`row2-${index}`}
-                whileHover={{ scale: 1.05, zIndex: 10 }}
-                className="relative flex-shrink-0 w-[400px] h-[500px] rounded-2xl overflow-hidden group cursor-pointer"
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500" />
-                <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <span className="inline-block px-4 py-1 bg-yellow-500 text-black text-sm font-bold rounded-full mb-3">
-                    {project.category}
-                  </span>
-                  <h3 className="text-2xl font-bold text-white">
-                    {project.title}
-                  </h3>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+            animate={{ x: [0, -2400] }}
+            transition={{
+              duration: 40,
+              repeat: Infinity,
+              ease: "linear",
+              repeatType: "loop",
+            }}
+            className="flex gap-6 will-change-transform"
+            style={{ transform: "translateZ(0)" }}
+          ></motion.div>
         </div>
       </section>
 
@@ -630,7 +624,7 @@ const InteriorDesignWebsite = () => {
         }`}
       >
         {/* Animated Background Elements */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-yellow-500/5 rounded-full blur-2xl" />
+        {/* <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-yellow-500/5 rounded-full blur-2xl" />
         <motion.div
           animate={{
             scale: [1.2, 1, 1.2],
@@ -639,7 +633,11 @@ const InteriorDesignWebsite = () => {
           }}
           transition={{ duration: 20, repeat: Infinity }}
           className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"
-        />
+        /> */}
+
+        {/* Static Background Elements */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-yellow-500/5 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-600/5 rounded-full blur-2xl pointer-events-none" />
 
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -848,9 +846,10 @@ const InteriorDesignWebsite = () => {
                       isDarkTheme ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
-                    Ensuring every vision is executed with precision and technical excellence.<br/>
-
-                       Streamlining procurement and site execution workflows.
+                    Ensuring every vision is executed with precision and
+                    technical excellence.
+                    <br />
+                    Streamlining procurement and site execution workflows.
                   </p>
                 </div>
               </div>
@@ -907,21 +906,20 @@ const InteriorDesignWebsite = () => {
                       isDarkTheme ? "text-white" : "text-black"
                     }`}
                   >
-                    Praveen 
+                    Praveen
                   </h3>
                   <p className="text-yellow-400 font-semibold mb-4">
-                  Lead Designer
+                    Lead Designer
                   </p>
                   <p
                     className={`leading-relaxed ${
                       isDarkTheme ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
-                     Transforming spatial concepts into immersive architectural realities.<br/>
-
-  Expert in spatial planning and bespoke luxury furniture.
-
-
+                    Transforming spatial concepts into immersive architectural
+                    realities.
+                    <br />
+                    Expert in spatial planning and bespoke luxury furniture.
                   </p>
                 </div>
               </div>
@@ -981,16 +979,17 @@ const InteriorDesignWebsite = () => {
                     Somnath
                   </h3>
                   <p className="text-yellow-400 font-semibold mb-4">
-                  Creative Director
+                    Creative Director
                   </p>
                   <p
                     className={`leading-relaxed ${
                       isDarkTheme ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
-                     Defining the visual language and aesthetic soul of every project.<br/>
-
-  Focused on material palettes and avant-garde styling.
+                    Defining the visual language and aesthetic soul of every
+                    project.
+                    <br />
+                    Focused on material palettes and avant-garde styling.
                   </p>
                 </div>
               </div>
@@ -1102,7 +1101,6 @@ const InteriorDesignWebsite = () => {
                   <div className="flex items-center gap-3">
                     <div className="relative">
                       <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full blur-md opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
-                      
                     </div>
                     <div>
                       <h4
@@ -1112,7 +1110,6 @@ const InteriorDesignWebsite = () => {
                       >
                         {review.name}
                       </h4>
-                      
                     </div>
                   </div>
                 </div>
@@ -1141,7 +1138,7 @@ const InteriorDesignWebsite = () => {
                 isDarkTheme ? "text-gray-400 mt-2" : "text-gray-600 mt-2"
               }
             >
-              Average rating from  happy clients
+              Average rating from happy clients
             </p>
           </div>
         </div>
@@ -1203,183 +1200,183 @@ const InteriorDesignWebsite = () => {
         }`}
       >
         {/* Main Footer Content */}
-        <div className="lg:flex lg:flex-row lg:justify-evenly" >
-        <div className="max-w-7xl mx-auto px-4 py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-            {/* Company Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
+        <div className="lg:flex lg:flex-row lg:justify-evenly">
+          <div className="max-w-7xl mx-auto px-4 py-16">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+              {/* Company Info */}
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex  flex-col justify-center items-center gap-2 cursor-pointer"
-                onClick={() => scrollToSection("#home")}
-                
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
               >
-                {/* Your Logo Image */}
-                <img
-                  src={magnum2}
-                  alt="Logo"
-                  className="h-12 w-auto my-1  "
-                  loading="lazy"
-                />
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="flex  flex-col justify-center items-center gap-2 cursor-pointer"
+                  onClick={() => scrollToSection("#home")}
+                >
+                  {/* Your Logo Image */}
+                  <img
+                    src={magnum2}
+                    alt="Logo"
+                    className="h-12 w-auto my-1  "
+                    loading="lazy"
+                  />
+                </motion.div>
+                <p
+                  className={`mb-0 leading-relaxed sm:text-align-center ${
+                    isDarkTheme ? "text-gray-400" : "text-gray-600"
+                  }`}
+                >
+                  Transforming spaces into timeless masterpieces. We bring your
+                  vision to life with creativity, precision, and passion.
+                </p>
+                {/* Social Media */}
               </motion.div>
-              <p
-                className={`mb-0 leading-relaxed sm:text-align-center ${
-                  isDarkTheme ? "text-gray-400" : "text-gray-600"
-                }`}
+
+              {/* Quick Links */}
+
+              <div className="flex justify-evenly lg:flex lg:justify-between">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
+                    Quick Links
+                  </h3>
+                  <ul className="space-y-3">
+                    {navItems.map((item, index) => (
+                      <li key={index}>
+                        <button
+                          onClick={() => scrollToSection(item.href)}
+                          className={`transition-colors duration-300 flex items-center gap-2 group ${
+                            isDarkTheme
+                              ? "text-gray-400 hover:text-yellow-400"
+                              : "text-gray-600 hover:text-yellow-600"
+                          }`}
+                        >
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                          {item.name}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+
+                {/* Services */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
+                    Our Services
+                  </h3>
+                  <ul className="space-y-3">
+                    {services.map((service, index) => (
+                      <li key={index}>
+                        <a
+                          href="#services"
+                          className={`transition-colors duration-300 flex items-center gap-2 group ${
+                            isDarkTheme
+                              ? "text-gray-400 hover:text-yellow-400"
+                              : "text-gray-600 hover:text-yellow-600"
+                          }`}
+                        >
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                          {service.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </div>
+              {/* Contact Info */}
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
               >
-                Transforming spaces into timeless masterpieces. We bring your
-                vision to life with creativity, precision, and passion.
-              </p>
-              {/* Social Media */}
-              
-            </motion.div>
-
-            {/* Quick Links */}
-           
-            <div className="flex justify-evenly lg:flex lg:justify-between">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
-                Quick Links
-              </h3>
-              <ul className="space-y-3">
-                {navItems.map((item, index) => (
-                  <li key={index}>
-                    <button
-                      onClick={() => scrollToSection(item.href)}
-                      className={`transition-colors duration-300 flex items-center gap-2 group ${
-                        isDarkTheme
-                          ? "text-gray-400 hover:text-yellow-400"
-                          : "text-gray-600 hover:text-yellow-600"
-                      }`}
-                    >
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                      {item.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Services */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
-                Our Services
-              </h3>
-              <ul className="space-y-3">
-                {services.map((service, index) => (
-                  <li key={index}>
-                    <a
-                      href="#services"
-                      className={`transition-colors duration-300 flex items-center gap-2 group ${
-                        isDarkTheme
-                          ? "text-gray-400 hover:text-yellow-400"
-                          : "text-gray-600 hover:text-yellow-600"
-                      }`}
-                    >
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                      {service.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-            </div>
-            {/* Contact Info */}
-           
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              
-            >
-              <h3 className=" text-center text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
-                Get In Touch
-              </h3>
-              <ul className="space-y-4">
-                <li
-                  className={`flex items-start gap-3 ${
-                    isDarkTheme ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  <MapPin className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
-                  <span>5th floor , pranava business park HiTech-City , Kothaguda, Hyderabad - Telangana 500084</span>
-                </li>
-                <li
-                  className={`flex items-start gap-3 ${
-                    isDarkTheme ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  <Phone className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <a
-                      href="tel:+91 9000487911"
-                      className={`transition-colors duration-300 block ${
-                        isDarkTheme
-                          ? "hover:text-yellow-400"
-                          : "hover:text-yellow-600"
-                      }`}
-                    >
-                      +91 9000487911
-                    </a>
-                    <a
-                      href="https://wa.me/+919000487911"
-                      className={`transition-colors duration-300 text-sm block mt-1 ${
-                        isDarkTheme
-                          ? "hover:text-yellow-400"
-                          : "hover:text-yellow-600"
-                      }`}
-                    >
-                      WhatsApp Available
-                    </a>
-                  </div>
-                </li>
-                <li
-                  className={`flex items-start gap-3 ${
-                    isDarkTheme ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  <Mail className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
-                  <a
-                    href="mailto:themagnumspaces@gmail.com"
-                    className={`transition-colors duration-300 ${
-                      isDarkTheme
-                        ? "hover:text-yellow-400"
-                        : "hover:text-yellow-600"
+                <h3 className=" text-center text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
+                  Get In Touch
+                </h3>
+                <ul className="space-y-4">
+                  <li
+                    className={`flex items-start gap-3 ${
+                      isDarkTheme ? "text-gray-400" : "text-gray-600"
                     }`}
                   >
-                    themagnumspaces@gmail.com
-                  </a>
-                </li>
-                <li
-                  className={`flex items-start gap-3 ${
-                    isDarkTheme ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  <Clock className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
-                    <p className="text-sm">Sat: 10:00 AM - 4:00 PM</p>
-                  </div>
-                </li>
-              </ul>
-            </motion.div>
-          </div>
+                    <MapPin className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
+                    <span>
+                      5th floor , pranava business park HiTech-City , Kothaguda,
+                      Hyderabad - Telangana 500084
+                    </span>
+                  </li>
+                  <li
+                    className={`flex items-start gap-3 ${
+                      isDarkTheme ? "text-gray-400" : "text-gray-600"
+                    }`}
+                  >
+                    <Phone className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <a
+                        href="tel:+91 9000487911"
+                        className={`transition-colors duration-300 block ${
+                          isDarkTheme
+                            ? "hover:text-yellow-400"
+                            : "hover:text-yellow-600"
+                        }`}
+                      >
+                        +91 9000487911
+                      </a>
+                      <a
+                        href="https://wa.me/+919000487911"
+                        className={`transition-colors duration-300 text-sm block mt-1 ${
+                          isDarkTheme
+                            ? "hover:text-yellow-400"
+                            : "hover:text-yellow-600"
+                        }`}
+                      >
+                        WhatsApp Available
+                      </a>
+                    </div>
+                  </li>
+                  <li
+                    className={`flex items-start gap-3 ${
+                      isDarkTheme ? "text-gray-400" : "text-gray-600"
+                    }`}
+                  >
+                    <Mail className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
+                    <a
+                      href="mailto:themagnumspaces@gmail.com"
+                      className={`transition-colors duration-300 ${
+                        isDarkTheme
+                          ? "hover:text-yellow-400"
+                          : "hover:text-yellow-600"
+                      }`}
+                    >
+                      themagnumspaces@gmail.com
+                    </a>
+                  </li>
+                  <li
+                    className={`flex items-start gap-3 ${
+                      isDarkTheme ? "text-gray-400" : "text-gray-600"
+                    }`}
+                  >
+                    <Clock className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                      <p className="text-sm">Sat: 10:00 AM - 4:00 PM</p>
+                    </div>
+                  </li>
+                </ul>
+              </motion.div>
+            </div>
           </div>
 
           {/* Newsletter Section */}
